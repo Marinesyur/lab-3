@@ -1,0 +1,48 @@
+#include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+bool isPolindrom(string number) {
+	for (int i = 0; i < number.length() / 2; i++) {
+		if (number[i] != number[number.length() - i - 1]) {
+			return false;
+		}
+	}
+	return true;
+}
+
+int main()
+{
+	vector<string> vrr;
+
+	int n;
+	string number;
+
+	cout << "Enter amount of numbers: ";
+	cin >> n;
+
+	clock_t start = clock();
+
+	for (int i = 0; i < n; i++) {
+		cout << "Enter number: ";
+		cin >> number;
+		if (isPolindrom(number)) {
+			vrr.push_back(number);
+		}
+	}
+
+	clock_t end = clock();
+	cout << double(end - start) / CLOCKS_PER_SEC << endl;
+
+	cout << "Want to see polindrom numbers? \n(1) yes, (2) no: ";
+	cin >> n;
+	if (n == 1) {
+		for (int i = 0; i < vrr.size(); i++) {
+			cout << vrr[i] << endl;
+		}
+	}
+	
+	return 0;
+}
